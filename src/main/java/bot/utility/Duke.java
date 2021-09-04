@@ -137,6 +137,7 @@ public class Duke extends Application {
      * Generate a response to user input.
      */
     protected String getResponse(String input) {
+        assert !input.equals("");
         Command command = parser.parse(input);
         if (command.canEnd()) {
             Platform.exit();

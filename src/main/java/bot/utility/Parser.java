@@ -14,8 +14,9 @@ import bot.error.DukeException;
  * Represents a parser that can read and understand what to do with an input String.
  */
 public class Parser {
+
     /**
-     * Returns a Command containing information according to the isntruction by the user.
+     * Returns a Command containing information according to the instruction by the user.
      */
     public Command parse(String input) {
         String[] words = input.trim().split(" ", 2);
@@ -45,6 +46,7 @@ public class Parser {
             return new ErrorCommand(e.getMessage());
         }
     }
+
     /**
      * Handles DukeExceptions for the chatBot
      * @param log The separate words in a given line
@@ -60,6 +62,8 @@ public class Parser {
                 throw new DukeException("\n\t By the heavens!. I need some description and a timing!");
             case "find":
                 throw new DukeException("\n\t I need something to search for!");
+            case "":
+                throw new DukeException("\n\t Enlightened one, I need something to work with!");
             default:
                 break;
             }
