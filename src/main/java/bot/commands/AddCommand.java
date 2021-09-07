@@ -1,5 +1,6 @@
 package bot.commands;
 
+import java.util.Collections;
 import java.util.List;
 
 import bot.tasks.Deadline;
@@ -39,16 +40,19 @@ public class AddCommand extends Command {
         case "todo":
             ToDo todo = new ToDo(info);
             tasks.add(todo);
+            Collections.sort(tasks);
             return formatMessage(todo.toString(), tasks.size());
         case "deadline":
             String[] details = info.split(" /by ", 2);
             Deadline deadline = new Deadline(details[0], details[1]);
             tasks.add(deadline);
+            Collections.sort(tasks);
             return formatMessage(deadline.toString(), tasks.size());
         case "event":
             details = info.split(" /at ", 2);
             Event event = new Event(details[0], details[1]);
             tasks.add(event);
+            Collections.sort(tasks);
             return formatMessage(event.toString(), tasks.size());
         default:
             break;

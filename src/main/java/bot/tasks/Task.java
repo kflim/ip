@@ -3,7 +3,7 @@ package bot.tasks;
 /**
  * Represents a task.
  */
-public class Task {
+public class Task implements Comparable<Task> {
     protected static final String YMD_DATE_FORMAT = "yyyy/MM/dd";
     protected static final String DMY_DATE_FORMAT = "dd/MM/yyyy";
     protected static final String YMD_REGEX = "([0-9]{4})/([1-9]|[0][1-9]|[1][0-2])/"
@@ -56,5 +56,10 @@ public class Task {
     @Override
     public String toString() {
         return "[" + this.getStatusIcon() + "] " + this.description;
+    }
+
+    @Override
+    public int compareTo(Task o) {
+        return this.toString().compareTo(o.toString());
     }
 }
